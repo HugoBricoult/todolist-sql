@@ -9,8 +9,12 @@ if(isset($_POST['id']) & isset($_POST['login']) & isset($_POST['password'])){
     if($result == false){
         echo "Wrong username or password";
     }else{
-        $req = ("UPDATE todo SET isdone = NOT isdone WHERE id = $id");
-        $stmt = $bdd->exec($req);
-        echo $stmt;
+        if($password == $result['password']){
+            $req = ("UPDATE todo SET isdone = NOT isdone WHERE id = $id");
+            $stmt = $bdd->exec($req);
+            echo $stmt;
+        }else{
+            echo '"bad password"';
+        }
     }
 }

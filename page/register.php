@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 if(isset($_POST['register'])){
     $getusername = $bdd->query("SELECT * FROM user WHERE nickname = '".$_POST['username']."'");
@@ -12,7 +11,7 @@ if(isset($_POST['register'])){
             $password = md5($_POST['password']);
             $req = "INSERT INTO user (nickname, password) VALUES ('$pseudo', '$password')";
             $bdd->exec($req);
-            header("Location:index.php?page=login");
+            echo '<script>window.location = "index.php?page=login"</script>';
         }else{
             echo "les Mots de passe ne sont pas identiques";
         }

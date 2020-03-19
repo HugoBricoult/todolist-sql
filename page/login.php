@@ -1,5 +1,4 @@
 <?php
-session_start();
 if(isset($_POST['username']) & isset($_POST['password'])){
     $password = md5($_POST['password']);
     $username = $_POST['username'];
@@ -11,7 +10,7 @@ if(isset($_POST['username']) & isset($_POST['password'])){
         if($password == $result['password']){
             $_SESSION['login'] = $username;
             $_SESSION['password'] = $password;
-            header("Location:index.php?page=todo");
+            echo '<script>window.location = "index.php?page=todo"</script>';
         }else{
             echo "Mauvais mot de passe.";
         }

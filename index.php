@@ -1,11 +1,16 @@
 <?php
+session_start();
+
 //set database tables and config link to database
 include ('./utils/config.php');
 include ('./utils/install.php');
 
 //header
 include ('./header.php');
-
+$isconnect = true;
+if(!isset($_SESSION['login']) || !isset($_SESSION['password'])){
+    $isconnect = false;
+}
 //body
 $pages = array("login","todo","register");
 if(isset($_GET['page'])){
@@ -15,7 +20,12 @@ if(isset($_GET['page'])){
         include('./page/404.php');
     }
 }else{
-    include ('./page/todo.php');
+    if($isconnect){
+        include ('./page/todo.php');
+    }else{
+        include ('./page/login.php');
+    }
+    
 }
 
 //footer

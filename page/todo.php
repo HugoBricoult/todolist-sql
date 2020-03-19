@@ -1,7 +1,6 @@
 <?php
-session_start();
-if(!isset($_SESSION['login']) || !isset($_SESSION['password'])){
-    header("Location:index.php?page=login");
+if(!isset($_SESSION['login'])){
+    echo '<script>window.location = "index.php?page=login"</script>';
 }
 $user = $_SESSION['login'];
 ?>

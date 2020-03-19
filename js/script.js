@@ -18,7 +18,7 @@ let addtask = (login,password)=>{
             let newtextitem = document.createElement('p');
             newlistitem.setAttribute("id",val);
             newinputitem.setAttribute('type','checkbox');
-            newinputitem.setAttribute('onclick',"changestats("+val+","+login+","+password+")");
+            newinputitem.setAttribute('onclick',"changestats("+val+",'"+login+"','"+password+"')");
             newtextitem.innerHTML = task;
             newlistitem.appendChild(newinputitem);
             newlistitem.appendChild(newtextitem);
